@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+p  {
+    color: rgb(132, 212, 236);
+    font-family: courier;
+    font-size: 100%;
+}
+  table, th, td {
+  border: 1px solid rgb(2, 9, 15);
+  }
+</style>
+</head>
+  <body>
+  <div>
+    <form action="/film_details" method="Get">
+      <p>Choose film id :</p>
+      <input name="id" type="text"/>
+      <button type="submit">Details</button>
+      <br>
+      </br>
+      </div>
+            <table>
+            <tr>
+                <th> Film information </th>
+            </tr>
+            <tr>
+                <td><% cout << context["film"]; %></td>
+            </tr>
+            </table>
+            <table>
+              <tr>
+                <th>Films id with maximum rate</th>
+                <th>See details of film</th>
+              </tr>
+              <tr>
+                <% for(int i = 0; i < stoi(context["size_of_context"]); i++){
+                  std::string number_of_film = to_string(i);%>
+                  <td><% cout << context[number_of_film]; %></td>
+                  <td><a href='see_film_details?id=<% cout << context[number_of_film]; %>'>details</a></td>
+                  </tr>
+              <%
+              }
+              %>
+            </table>
+          <br>
+          <a href="/logout"="_blank" style="color:rgb(204, 130, 223)">Logout</a>
+      </form>
+</body>
+</html>
+

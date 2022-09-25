@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+p  {
+    color: rgb(132, 212, 236);
+      font-family: courier;
+      font-size: 100%;
+      }
+table, th, td {
+border: 1px solid rgb(5, 16, 26);
+}
+</style>
+</head>
+  <body>
+  <div>
+    <form  action="/publisher_home" method="= Get">
+      <h1 style="color:rgb(0, 162, 255);">Publisher Home :)</h1><img src="/home.jpg" style="width:5%;">
+      <p>Choose director :</p>
+      <input name="director" type="text"/>
+      <button type="submit">Filter</button>
+      <br>
+      </br>
+  </div>
+        <table>
+            <tr>
+              <th> Film number</th>
+              <th> Films information </th>
+              <th> Delete film </th>
+            </tr>
+            <tr>
+              <% for(int i = 0; i < stoi(context["size_of_context"]); i++){
+                  std::string number_of_film = to_string(i);%>
+                  <td><% cout << i + 1 ; %></td>
+                  <td><% cout << context[number_of_film]; %></td>
+                  <td><a href='delete_film?id=<% cout << context[number_of_film + "id"]; %>'>Delete</a></td>
+                  </tr>
+              <%
+              }
+              %>
+        </table>
+            <a href="/add_film">Add films </a>
+          <br>
+          <a href="/logout"="_blank" style="color:rgb(204, 130, 223)">Logout</a>
+      </form>
+    </body>
+    <br>
+    <br>
+</html>

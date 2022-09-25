@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <style>
+  table, th, td {
+  border: 1px solid rgb(5, 14, 22);
+  }
+  </style>
+  </head>
+    <body>
+      <form action="/see_film_details" method= "GET">
+            <table>
+                <tr>
+                    <th> Film Details</th>
+                </tr>
+                <tr>
+                    <td><% cout << context["film"]; %></td>
+                </tr>
+            </table>
+          <br>
+          <input type="hidden" name="buy" value="1">
+          <button type="submit">Buy</button>
+          <% if(context["buy"] == "buy"){%>
+            <br>
+            <input name="rate" placeholder="choose one to ten">
+            <button type="submit">Rate</button>
+            <br>
+        <% } %>
+        <% if(context["rate"] == "rate"){%>
+            <br>
+            <input name="comment" placeholder="Comment">
+            <button type="submit">Add comment</button>
+          <% } %>
+          <% if(context["comment"] == "comment"){%>
+            <br>
+            <table>
+                <tr>
+                  <th> Comment number</th>
+                  <th> Film comments </th>
+                </tr>
+                <tr>
+                  <% for(int i = 0; i < stoi(context["size_of_context"]); i++){
+                      std::string number_of_film = to_string(i);%>
+                      <td><% cout << i + 1 ; %></td>
+                      <td><% cout << context[number_of_film]; %></td>
+                      </tr>
+                  <%
+                  }
+                  %>
+            </table>
+          <% } %>
+          <br>
+          <br>
+          <a href="/logout"="_blank" style="color:rgb(204, 130, 223)">Logout</a>
+    </form>
+  </body>
+</html>

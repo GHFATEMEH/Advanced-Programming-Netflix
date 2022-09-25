@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <style>
+  table, th, td {
+  border: 1px solid rgb(4, 11, 17);
+  }
+  </style>
+  </head>
+  <body>
+      <form action="/customer_home" method= "GET">
+        <h1 style="color:rgb(0, 162, 255);">Customer Home :)</h1><img src="/home.jpg" style="width:5%;">
+            <table>
+              <tr>
+                <th> Film number</th>
+                <th> Films information </th>
+              </tr>
+              <tr>
+                <% for(int i = 0; i < stoi(context["size_of_context"]); i++){
+                      std::string number_of_film = to_string(i);%>
+                      <td><% cout << i + 1 ; %></td>
+                      <td><% cout << context[number_of_film]; %></td>
+                     </tr>
+                <%
+                  }
+                %>
+            </table>
+            <a href="/customer_profile"> Profile </a>
+          <br>
+          <a href="/film_details"="_blank">Film details</a>
+          <br>
+          <a href="/logout"="_blank" style="color:rgb(204, 130, 223)">Logout</a>
+      </form>
+  </body>
+</html>
